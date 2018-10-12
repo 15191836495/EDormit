@@ -98,17 +98,14 @@
     <li><a href="#">消息发送</a></li>
 </ul></div>
 
-<button id="oplight" onclick="sentjson()">电灯</button>
+<button type="button" class="am-btn am-btn-warning"  onclick="sentjson()">电灯</button>
 <script src="../assets/js/amazeui.min.js"></script>
 <script src="../assets/js/jquery-3.3.1.min.js"></script>
 <script>
-    const json = {id:"133",name:"jackon",C:"11220"};
-    let json2 = json.stringify(json);
-    console.log(json);
-    console.log(json2);
-    console.log('start');
+function sentjson(){
+    
+    alert('灯泡已经点亮');
+}
 </script>
-
-
 </body>
 </html>

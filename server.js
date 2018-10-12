@@ -9,7 +9,9 @@ let server = net.createServer(function(socket){
     console.log('Server：start to listen');
 // 接收数据并处理   处理nodemcu数据在这里
     socket.on(`data`, function(data){
-                                       // 转字符串输出控制台
+        // 转字符串输出控制台
+        // json格式{"M":"checkin","ID":"xx1","K":"xx2"}\n
+        console.log(data);
         let data1 = data.toString();
         let data2 = JSON.parse(data1);
         console.log(data2.M);

@@ -36,8 +36,13 @@
     <script src="../assets/js/amazeui.min.js"></script>
     <script src="../assets/js/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../json.js"></script>
+    <script src="../assets/js/json3.js"></script>
+
+
 </head>
 <body>
+    <!--头部菜单栏-->
 <header class="am-topbar">
     <h1 class="am-topbar-brand">
         <a href="../index.html"> E home</a>
@@ -93,8 +98,16 @@
     <li><a href="#">消息发送</a></li>
 </ul></div>
 
+<button id="oplight" onclick="sentjson()">电灯</button>
 <script src="../assets/js/amazeui.min.js"></script>
 <script src="../assets/js/jquery-3.3.1.min.js"></script>
+<script>
+    const json = {id:"133",name:"jackon",C:"11220"};
+    let json2 = json.stringify(json);
+    console.log(json);
+    console.log(json2);
+    console.log('start');
+</script>
 
 
 </body>

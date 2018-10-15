@@ -1,5 +1,7 @@
 let net = require('net');
-
+//let solution = require('./solution.js')
+// 现在可以直接从solution.js中引用commend变量 
+// 格式  solution.commend
 let PORT = 8888;
 let HOST = '127.0.0.1';
 
@@ -10,7 +12,8 @@ let server = net.createServer(function(socket){
 // 接收数据并处理   处理nodemcu数据在这里
     socket.on(`data`, function(data){
         // 转字符串输出控制台
-        // json格式{"M":"checkin","ID":"xx1","K":"xx2"}\n
+        // json格式 登录请求{"M":"checkin","ID":"xx1","K":"xx2"}\n
+        // Server 数据发送{"M":"say","ID":"xx1","C":"xx2","SIGN":"xx3"}\n
         console.log(data);
         let data1 = data.toString();
         let data2 = JSON.parse(data1);
@@ -23,7 +26,7 @@ let server = net.createServer(function(socket){
         }
 
 //接收数据返回字符串 发送操作在这里
-        //收到web发来的json数据
+        //收到solution发来的json数据
         socket.write('recieve \n');
     });
 
@@ -33,5 +36,5 @@ let server = net.createServer(function(socket){
 });
 // 服务器开始运行
 server.listen(PORT, HOST, function(){
-    console.log('start');
+    console.log('The Server begin to run.');
 });

@@ -2,7 +2,7 @@ let net = require('net');
 //let solution = require('./solution.js')
 // 现在可以直接从solution.js中引用commend变量 
 // 格式  solution.commend
-let PORT = 8888;
+let PORT = 8124;
 let HOST = '127.0.0.1';
 
 // tcp服务端
@@ -27,7 +27,7 @@ let server = net.createServer(function(socket){
 
 //接收数据返回字符串 发送操作在这里
         //收到solution发来的json数据
-        socket.write('recieve \n');
+        //socket.write('solution.mesg \n');
     });
 
     socket.on('close', function(){

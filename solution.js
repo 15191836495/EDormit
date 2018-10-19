@@ -23,6 +23,7 @@ json{
 let json = {id:"133",name:"jackon",C:"11220"};
 // commend 从html发来的json数据格式。
 let commend = {"M":"say","ID":"xx1","C":"xx2","SIGN":"xx3"};
+exports.mesg = commend;
 console.log(json.C); 
 
 

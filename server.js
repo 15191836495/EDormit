@@ -1,10 +1,45 @@
-let net = require('net');
-//let solution = require('./solution.js')
-// 现在可以直接从solution.js中引用commend变量 
-// 格式  solution.commend
-let PORT = 8124;
-let HOST = '127.0.0.1';
+/* 
+{
+    "M":"say",
+    "ID":"1212313",
+    "C":[
+        {
+            "led":1,
+            "pwm":1,
+            "bulb":1,
+            "mac":1
 
+        }
+    ]
+}
+
+
+*/
+// 前端http通信
+let net = require('net');
+let PORT = 8124;
+let HOST = '0';
+let http = require('http');
+const body = '';
+var server = http.createServer(function (req, res) {
+    
+    req.on('data', function(data) {      // 接收客户端发送过来的数据， 也就是 xmlHttp.send(value);
+        body += data ;
+        console.log(JSON.parse(data.tostring()));
+        socket.write(data);
+    });
+    req.on('end', function() {
+        res.writeHeader(200, {
+            'Content-Type': 'text/plain',
+            'Access-Control-Allow-Origin': '*'    //解决跨域问题
+        });
+        res.write("hello:" + body);
+        res.end();
+    })
+});
+server.listen(3000, function () {
+    console.log('server start at localhost:3000');
+});
 // tcp服务端
 //开始监听
 let server = net.createServer(function(socket){
@@ -19,10 +54,10 @@ let server = net.createServer(function(socket){
         let data2 = JSON.parse(data1);
         console.log(data2.M);
         if (data2.M === "checkin"){
-            socket.write('commend checin recieve \n');
+            
         }
         else {
-            //断开连接
+            
         }
 
 //接收数据返回字符串 发送操作在这里

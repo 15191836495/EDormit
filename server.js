@@ -14,7 +14,7 @@ let server = net.createServer(function(socket){
         // 转字符串输出控制台
         // json格式 登录请求{"M":"checkin","ID":"xx1","K":"xx2"}\n
         // Server 数据发送{"M":"say","ID":"xx1","C":"xx2","SIGN":"xx3"}\n
-        console.log(data);
+        //console.log(data);
         let data1 = data.toString();
         let data2 = JSON.parse(data1);
         console.log(data2.M);

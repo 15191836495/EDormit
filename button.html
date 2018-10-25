@@ -6,33 +6,34 @@
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
-<button id="test" type="submit">发送</button>
+<button id="test1" type="submit">亮灯</button>
+<button id="test2" type="submit">灭灯</button>
 </body>
 </html>
 <script>
-    $('#test').click(function () {
+    $('#test1').click(function () {
         $.ajax({
-            type: 'post',
-            url: 'http://127.0.0.1:3000/server.js',
-            data: {
-    "M":"say",
-    "ID":"1212313",
-    "C":[
-        {
-            "led":1,
-            "pwm":0,
-            "bulb":0,
-            "mac":0
-
-        }
-    ]
-},
-            success: function (data) {
+        type: 'POST',
+        url: "http://127.0.0.1:8124",
+        data:{"M":"say","ID":"1212313","C":{"led":"1","pwm":"0","bulb":"0","mac":"0"}} ,
+        success: function (data) {
                 alert(data);
             },
-            error: function (xml) {
+        error: function (xml) {
                 alert(xml.status);
-            }
-        })
-    })
+},})
+})
+    $('#test2').click(function () {
+        $.ajax({
+        type: 'POST',
+        url: "http://127.0.0.1:8124",
+        data:{"M":"say","ID":"1212313","C":{"led":"0","pwm":"0","bulb":"0","mac":"0"}} ,
+        success: function (data) {
+                alert(data);
+            },
+        error: function (xml) {
+                alert(xml.status);
+},})
+})
+            
 </script>

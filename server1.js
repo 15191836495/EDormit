@@ -32,7 +32,7 @@ var server = http.createServer(function (req, res) {
             'Content-Type': 'text/plain',
             'Access-Control-Allow-Origin': '*'    
         });
-        res.write(' 命令已收到');
+        res.write(' 命令收到');
         res.end();
     }
     });

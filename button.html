@@ -15,7 +15,7 @@
         $.ajax({
         type: 'POST',
         url: "http://127.0.0.1:8124",
-        data:{"M":"say","ID":"1212313","C":{"led":"1","pwm":"0","bulb":"0","mac":"0"}} ,
+        data:{"M":"mcustaus","ID":"1212313","C":{"led":"1","pwm":"0","bulb":"0","mac":"0"}} ,
         success: function (data) {
                 alert(data);
             },
@@ -27,7 +27,7 @@
         $.ajax({
         type: 'POST',
         url: "http://127.0.0.1:8124",
-        data:{"M":"say","ID":"1212313","C":{"led":"0","pwm":"0","bulb":"0","mac":"0"}} ,
+        data:{"M":"com","ID":"1212313","C":{"led":"0","pwm":"0","bulb":"0","mac":"0"}} ,
         success: function (data) {
                 alert(data);
             },

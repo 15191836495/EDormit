@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>console</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/myjs/vue.min.js"></script>
+    <script src="../js/myjs/console.js"></script>
+    <link rel="stylesheet" href="../css/buttons.css">
+</head>
+<body>
+    <div id="app">
+        <navbar></navbar>
+        <div class="container-fluid" style="height: 700px">
+            <div class="row">
+                <div class="row col-12 justify-content-center">
+                    <p id="weather"></p>
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="row">
+                <div class="row col align-items-center justify-content-center" style="height: 200px">
+                    <img class="img-fluid" src="../imgaes/闪电.png" width="30%" height="30%"/>
+                    <div class="w-100"></div>
+                    <div class="row">
+                        <a href="https://payment.xidian.edu.cn/MNetWorkUI/showPublic">电费: {{electric_charge}}</a>
+                    </div>
+                </div>
+                <div class="row col align-items-center justify-content-center" style="height: 200px">
+                    <img class="img-fluid" src="../imgaes/wifi.png" width="30%" height="30%"/>
+                    <div class="w-100"></div>
+                    <div class="row">
+                        <a href="https://payment.xidian.edu.cn/MNetWorkUI/showPublic">网费：{{Internet_charge}}</a>
+                    </div>
+                </div>
+                <div class="row col align-items-center justify-content-center" style="height: 200px">
+                    <img class="img-fluid" src="../imgaes/水滴.png" width="30%" height="30%"/>
+                    <div class="w-100"></div>
+                    <div class="row">
+                        <a href="https://payment.xidian.edu.cn/MNetWorkUI/showPublic">水费：{{water_charge}}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <ul class="nav nav-tabs justify-content-around" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">电器控制</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">社交平台</a>
+                </li>
+            </ul>
+            <br>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <button id="button1" class="button button-3d button-royal button-pill" style="width: 100%;height: 50px">开启空调</button>
+                    <br>
+                    <br>
+                    <button id="button2" class="button button-3d button-caution button-pill" style="width: 100%;height: 50px">开启电视</button>
+                    <br>
+                    <br>
+                    <button id="button3" class="button button-3d button-highlight button-pill" style="width: 100%;height: 50px">开启电灯</button>
+                    <br>
+                    <br>
+                    <button href="http://www.bootcss.com/" class="button button-glow button-border button-rounded button-pill" style="width: 100%;height: 50px">添加更多</button>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+            </div>
+        </div>
+        <foot></foot>
+
+    </div>
+</body>
+</html>
+<script>
+    //导航栏组件
+    Vue.component('navbar',{
+        template:'<div id="app">\n' +
+            '    <nav class="navbar navbar-expand-md navbar-light bg-light">\n' +
+            '        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#c1">\n' +
+            '            <span class="navbar-toggler-icon"></span>\n' +
+            '        </button>\n' +
+            '        <a class="navbar-brand" href="#">宿管云</a><span class="badge badge-dark">定义新社交</span>\n' +
+            '        <div id="c1" class="collapse navbar-collapse justify-content-end">\n' +
+            '            <form class="form-inline">\n' +
+            '                <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">\n' +
+            '                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>\n' +
+            '            </form>\n' +
+            '            <ul class="nav navbar-nav">\n' +
+            '                <li class="navbar-item">\n' +
+            '                    <a class="nav-link" href="#">控制台</a>\n' +
+            '                </li>\n' +
+            '                <li class="navbar-item">\n' +
+            '                    <a class="nav-link" href="#">最新版本</a>\n' +
+            '                </li>\n' +
+            '                <li class="navbar-item">\n' +
+            '                    <a class="nav-link" href="#">合作伙伴</a>\n' +
+            '                </li>\n' +
+            '            </ul>\n' +
+            '        </div>\n' +
+            '    </nav>\n' +
+            '</div>'
+    });
+    //底部组件
+    Vue.component('foot',{
+        template: '<div class="jumbotron text-center" style="width: 100%;margin-bottom: 0">\n' +
+            '        <p>本项目完全开源</p>\n' +
+            '    </div>'
+    });
+    //特点介绍组件
+    Vue.component('introduction',{
+        props: ['message','name'],
+        template: '<div class="col-md-4">\n' +
+            '                        <div class="row justify-content-center"><h2 style="color: #42b983">{{ name }}</h2></div>\n' +
+            '                        <blockquote class="blockquote text-center">\n' +
+            '                            <p class="lead">\n' +
+            '                                {{ message }}\n' +
+            '                            </p>\n' +
+            '                        </blockquote>\n' +
+            '                    </div>'
+    });
+    var app = new Vue({
+        el: '#app',
+        data: {
+            name1: '易用',
+            name2: '灵活',
+            name3: '高效',
+            word1: '宿舍电器控制，电费、水费、网费查询，轻巧集成！',
+            word2: '告别传统个人社交主义，开启宿舍社交的新时代！',
+            word3: '网页、微信小程序、语音控制，多种控制方式，随时随地掌控宿舍环境！',
+            selected1: '西安电子科技大学',
+            schools: [
+                {name: '清华大学'},
+                {name: '北京大学'},
+                {name: '西安交通大学'},
+                {name: '武汉大学'},
+                {name: '电子科技大学'},
+                {name: '四川大学'},
+                {name: '重庆大学'},
+                {name: '北京师范大学'},
+                {name: '东北大学'},
+                {name: '哈尔滨工业大学'},
+                {name: '西安电子科技大学'},
+                {name: '长安大学'},
+                {name: '吉林大学'},
+                {name: '中南大学'},
+                {name: '湖南大学'},
+                {name: '郑州大学'},
+                {name: '北京交通大学'},
+                {name: '东北师范大学'},
+                {name: '西北工业大学'},
+                {name: '浙江大学'},
+            ],
+            selected2: '竹园一号楼',
+            buildareas: [
+                {name : '竹园一号楼'},
+                {name : '竹园二号楼'},
+                {name : '竹园三号楼'},
+                {name : '竹园四号楼'},
+                {name : '海棠一号楼'},
+                {name : '海棠二号楼'},
+                {name : '海棠三号楼'},
+                {name : '海棠四号楼'},
+                {name : '丁香一号楼'},
+                {name : '丁香二号楼'},
+                {name : '丁香三号楼'},
+                {name : '丁香四号楼'},
+            ],
+            buildareas_number: [
+                {number: '1-216-左'},
+                {number: '1-215-左'},
+                {number: '1-214-左'},
+                {number: '1-213-左'},
+            ],
+            selected3: '1-216-左',
+            electric_charge: '100.00元',
+            Internet_charge: '49.45元',
+            water_charge: '34.90元'
+        }
+    });
+</script>

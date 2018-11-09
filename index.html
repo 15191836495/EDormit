@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>云宿管家—定义新社交</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/myjs/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <navbar></navbar>
+    <div class="container-fluid" style="height: 1000px">
+        <div class="row">
+            <div class="col-2 col-md-4" style="height: 300px"></div>
+            <div class="col-8 col-md-4" style="height: 300px;">
+                <div class="row" style="height: 100%">
+                    <img class="img-fluid" style="height: 100%;width: 100%" src="../imgaes/551103-1TOqFD1502285018.jpg"/>
+                </div>
+            </div>
+            <div class="col-2 col-md-4" style="height: 300px"></div>
+        </div>
+        <div class="w-100"></div>
+        <div class="row">
+            <div class="col-2 col-md-4"></div>
+            <div class="col-8 col-md-4">
+                <div class="row justify-content-center"><h1 style="color: #42b983">云宿管家</h1></div>
+                <div class="w-100"></div>
+                <div class="row justify-content-center"><p class="lead"><small>宿舍上云就上云宿管家</small></p></div>
+                <div class="w-100"></div>
+                <br>
+                <div class="row justify-content-center">
+                    <button class="btn btn-warning" type="button" data-toggle="modal" data-target="#signup">立即注册</button>
+                    <div class="modal" id="signup">
+                        <div class="modal-dialog" role="document" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">请填写注册信息：</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label class="col-form-label">学校：</label>
+                                        <select class="custom-select" v-model="selected1" style="height: 50%">
+                                            <option selected>西安电子科技大学</option>
+                                            <option v-for="school in schools" :value="school.name">
+                                                {{school.name}}
+                                            </option>
+                                        </select>
+                                        <label class="col-form-label">昵称：</label>
+                                        <input type="text" class="form-control" placeholder="请输入昵称（可修改）">
+                                        <label class="col-form-label">学号：</label>
+                                        <input type="text" class="form-control" placeholder="请输入学号">
+                                        <label class="col-form-label">楼区：</label>
+                                        <select class="custom-select" v-model="selected2" style="height: 50%">
+                                            <option selected>竹园一号楼</option>
+                                            <option v-for="buildarea in buildareas" :value="buildarea.name">
+                                                {{buildarea.name}}
+                                            </option>
+                                        </select>
+                                        <label class="col-form-label">宿舍号：</label>
+                                        <select class="custom-select" v-model="selected3" style="height: 50%">
+                                            <option selected>1-216-左</option>
+                                            <option v-for="buildarea_number in buildareas_number" :value="buildarea_number.number">
+                                                {{buildarea_number.number}}
+                                            </option>
+                                        </select>
+                                        <label class="col-form-label">密码：</label>
+                                        <input type="password" class="form-control" placeholder="请输入密码">
+                                        <label class="col-form-label">确认密码：</label>
+                                        <input type="password" class="form-control" placeholder="请再次输入密码">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-warning" data-dismiss="modal">立即加入</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="console.html"><button class="btn btn-dark btn-lg" type="button">极速体验</button></a>
+                    <a href="https://github.com/15191836495/EDormit"><button class="btn btn-info btn-lg" type="button">Github</button></a>
+                </div>
+            </div>
+            <div class="col-2 col-md-4"></div>
+        </div>
+        <br>
+        <br>
+
+        <!--特点介绍-->
+        <div class="row" style="height: 200px">
+            <div class="col-2 col-md-2"></div>
+            <div class="col-8 col-md-8">
+                <div class="row" style="height: 100%">
+                    <introduction :message="word1" :name="name1"></introduction>
+                    <introduction :message="word2" :name="name2"></introduction>
+                    <introduction :message="word3" :name="name3"></introduction>
+                </div>
+            </div>
+            <div class="col-2 col-md-2"></div>
+        </div>
+    </div>
+    <foot></foot>
+</div>
+</body>
+</html>
+<script>
+    //导航栏组件
+    Vue.component('navbar',{
+        template:'<div id="app">\n' +
+            '    <nav class="navbar navbar-expand-md navbar-light bg-light">\n' +
+            '        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#c1">\n' +
+            '            <span class="navbar-toggler-icon"></span>\n' +
+            '        </button>\n' +
+            '        <a class="navbar-brand" href="http://ehome.sooyu.top">云宿管家</a><span class="badge badge-dark">定义新社交</span>\n' +
+            '        <div id="c1" class="collapse navbar-collapse justify-content-end">\n' +
+            '            <form class="form-inline">\n' +
+            '                <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">\n' +
+            '                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>\n' +
+            '            </form>\n' +
+            '            <ul class="nav navbar-nav">\n' +
+            '                <li class="navbar-item">\n' +
+            '                    <a class="nav-link" href="#">控制台</a>\n' +
+            '                </li>\n' +
+            '                <li class="navbar-item">\n' +
+            '                    <a class="nav-link" href="#">最新版本</a>\n' +
+            '                </li>\n' +
+            '                <li class="navbar-item">\n' +
+            '                    <a class="nav-link" href="#">合作伙伴</a>\n' +
+            '                </li>\n' +
+            '                <li class="navbar-item">\n' +
+            '                    <a class="nav-link" href="#">登陆</a>\n' +
+            '                </li>\n' +
+            '                <button class="btn btn-secondary" type="submit">免费注册</button>\n' +
+            '            </ul>\n' +
+            '        </div>\n' +
+            '    </nav>\n' +
+            '</div>'
+    });
+    //底部组件
+    Vue.component('foot',{
+        template: '<div class="jumbotron text-center" style="width: 100%;margin-bottom: 0">\n' +
+            '        <p>本项目完全开源</p>\n' +
+            '    </div>'
+    });
+    //特点介绍组件
+    Vue.component('introduction',{
+        props: ['message','name'],
+        template: '<div class="col-md-4">\n' +
+            '                        <div class="row justify-content-center"><h2 style="color: #42b983">{{ name }}</h2></div>\n' +
+            '                        <blockquote class="blockquote text-center">\n' +
+            '                            <p class="lead">\n' +
+            '                                {{ message }}\n' +
+            '                            </p>\n' +
+            '                        </blockquote>\n' +
+            '                    </div>'
+    });
+    var app = new Vue({
+        el: '#app',
+        data: {
+            name1: '易用',
+            name2: '灵活',
+            name3: '高效',
+            word1: '宿舍电器控制，电费、水费、网费查询，轻巧集成！',
+            word2: '告别传统个人社交主义，开启宿舍社交的新时代！',
+            word3: '网页、微信小程序、语音控制，多种控制方式，随时随地掌控宿舍环境！',
+            selected1: '西安电子科技大学',
+            schools: [
+                {name: '清华大学'},
+                {name: '北京大学'},
+                {name: '西安交通大学'},
+                {name: '武汉大学'},
+                {name: '电子科技大学'},
+                {name: '四川大学'},
+                {name: '重庆大学'},
+                {name: '北京师范大学'},
+                {name: '东北大学'},
+                {name: '哈尔滨工业大学'},
+                {name: '西安电子科技大学'},
+                {name: '长安大学'},
+                {name: '吉林大学'},
+                {name: '中南大学'},
+                {name: '湖南大学'},
+                {name: '郑州大学'},
+                {name: '北京交通大学'},
+                {name: '东北师范大学'},
+                {name: '西北工业大学'},
+                {name: '浙江大学'},
+            ],
+            selected2: '竹园一号楼',
+            buildareas: [
+                {name : '竹园一号楼'},
+                {name : '竹园二号楼'},
+                {name : '竹园三号楼'},
+                {name : '竹园四号楼'},
+                {name : '海棠一号楼'},
+                {name : '海棠二号楼'},
+                {name : '海棠三号楼'},
+                {name : '海棠四号楼'},
+                {name : '丁香一号楼'},
+                {name : '丁香二号楼'},
+                {name : '丁香三号楼'},
+                {name : '丁香四号楼'},
+            ],
+            buildareas_number: [
+                {number: '1-216-左'},
+                {number: '1-215-左'},
+                {number: '1-214-左'},
+                {number: '1-213-左'},
+            ],
+            selected3: '1-216-左',
+        }
+    });
+</script>

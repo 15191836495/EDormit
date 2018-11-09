@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<button id="test1" type="submit">亮灯</button>
+<button id="test2" type="submit">灭灯</button><br>
+<button id="test3" type="submit">风扇启动</button>
+<button id="test4" type="submit">风扇关闭</button><br>
+<button id="test5" type="submit">呼吸灯开</button>
+<button id="test6" type="submit">呼吸灯关</button>
+
+</body>
+</html>
+<script>
+    $('#test1').click(function () {
+        $.ajax({
+        type: 'POST',
+        url: "http://39.106.102.143:8124",
+        data:{"M":"com","ID":"1212313","led":"0",} ,
+        success: function (data) {
+                alert(data);
+            },
+        error: function (xml) {
+                alert(xml.status);
+},})
+})
+    $('#test2').click(function () {
+        $.ajax({
+        type: 'POST',
+        url: "http://39.106.102.143:8124",
+        data:{"M":"com","ID":"1212313","led":"1"} ,
+        success: function (data) {
+                alert(data);
+            },
+        error: function (xml) {
+                alert(xml.status);
+},})
+})
+$('#test3').click(function () {
+        $.ajax({
+        type: 'POST',
+        url: "http://39.106.102.143:8124",
+        data:{"M":"com","ID":"1212313","mac":"0"} ,
+        success: function (data) {
+                alert(data);
+            },
+        error: function (xml) {
+                alert(xml.status);
+},})
+})
+$('#test4').click(function () {
+        $.ajax({
+        type: 'POST',
+        url: "http://39.106.102.143:8124",
+        data:{"M":"com","ID":"1212313","mac":"1"} ,
+        success: function (data) {
+                alert(data);
+            },
+        error: function (xml) {
+                alert(xml.status);
+},})
+})
+$('#test5').click(function () {
+        $.ajax({
+        type: 'POST',
+        url: "http://39.106.102.143:8124",
+        data:{"M":"com","ID":"1212313","pwm":"0"} ,
+        success: function (data) {
+                alert(data);
+            },
+        error: function (xml) {
+                alert(xml.status);
+},})
+})
+$('#test6').click(function () {
+        $.ajax({
+        type: 'POST',
+        url: "http://39.106.102.143:8124",
+        data:{"M":"com","ID":"1212313","pwm":"1"} ,
+        success: function (data) {
+                alert(data);
+            },
+        error: function (xml) {
+                alert(xml.status);
+},})
+})
+            
+</script>
